@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryomty ❤️</title>
+    <style>
+        :root {
+            --primary-color: #ff4d6d;
+            --bg-color: #fff0f3;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* الموسيقى */
+        #music-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* أقسام الصفحة */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .photo-box {
+            width: 300px;
+            height: 400px;
+            background: #ddd;
+            margin-bottom: 20px;
+            border: 8px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
+        /* العد التنازلي */
+        #countdown {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .time-unit {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 80px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .time-unit span {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .heart-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="music-btn" onclick="toggleMusic()">تشغيل الموسيقى 🎵</button>
+    <!-- https://youtube.com/shorts/eWyByIRr9KA?si=UXTvmObQMzGx0YSK music.mp3 -->
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="heart-bg" id="heart-bg"></div>
+
+    <!-- القسم الأول -->
+    <section>
+        <div class="photo-box">
+            <img src="p1.jpeg" alt="صورتكم">
+        </div>
+        <h2>مريومتي ❤️<br>ربنا يجمعني بيكي يا أحلى حاجة في أيامي</h2>
+    </section>
+
+    <!-- القسم الثاني -->
+    <section>
+        <div class="photo-box">
+            <img src="p2.jpeg" alt="صورتكم">
+        </div>
+        <h2>أنا من غيرك أيامي كانت وحشة أوي.. أنتي حليتي كل أيامي</h2>
+    </section>
+
+    <!-- القسم الثالث -->
+    <section>
+        <div class="photo-box">
+            <img src=p3.jpeg" alt="صورتكم">
+        </div>
+        <h2>أنتي رزق ربنا ليا ومش عايز غيرك في الدنيا كلها</h2>
+    </section>
+
+    <!-- القسم الرابع -->
+    <section>
+        <div class="photo-box">
+            <img src="p4.jpeg" alt="صورتكم">
+        </div>
+        <h2>أنتي أحن وأحلى واحدة في الدنيا كلها</h2>
+    </section>
+
+    <!-- القسم الخامس: العد التنازلي -->
+    <section>
+        <div class="photo-box">
+            <img src="p5.jpeg" alt="صورتكم">
+        </div>
+        <h2>فاضل قد إيه على أحلى يوم؟ 🎂</h2>
+        <div id="countdown">
+            <div class="time-unit"><span id="days">00</span>أيام</div>
+            <div class="time-unit"><span id="hours">00</span>ساعة</div>
+            <div class="time-unit"><span id="minutes">00</span>دقيقة</div>
+            <div class="time-unit"><span id="seconds">00</span>ثانية</div>
+        </div>
+    </section>
+
+    <script>
+        // كود الموسيقى
+        function toggleMusic() {
+            const music = document.getElementById('bg-music');
+            const btn = document.getElementById('music-btn');
+            if (music.paused) {
+                music.play();
+                btn.innerHTML = "إيقاف الموسيقى ⏸️";
+            } else {
+                music.pause();
+                btn.innerHTML = "تشغيل الموسيقى 🎵";
+            }
+        }
+
+        // كود العد التنازلي لـ 15 مايو
+        function updateCountdown() {
+            const birthday = new Date('May 15, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = birthday - now;
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = d;
+            document.getElementById('hours').innerText = h;
+            document.getElementById('minutes').innerText = m;
+            document.getElementById('seconds').innerText = s;
+        }
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
